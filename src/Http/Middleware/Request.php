@@ -138,6 +138,8 @@ class Request
 
         foreach ($middlewares as $middleware) {
             list($name, $parameters) = $this->parseMiddleware($middleware);
+            
+            if (stristr($name, 'StartSession')) continue;
 
             $instance = $this->app->make($name);
 
